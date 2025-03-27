@@ -9,10 +9,7 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      - run: deno lint "./**/*.js"
-      - run: deno lint "./**/*.jsx"
-      - run: deno lint "./**/*.ts"
-      - run: deno lint "./**/*.tsx"
+      - run: deno lint
 
   fmt:
     runs-on: ubuntu-latest
@@ -21,10 +18,7 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      - run: deno fmt --check "./**/*.js"
-      - run: deno fmt --check "./**/*.jsx"
-      - run: deno fmt --check "./**/*.ts"
-      - run: deno fmt --check "./**/*.jsx"
+      - run: deno fmt --check
 
   taplo:
     runs-on: ubuntu-latest
