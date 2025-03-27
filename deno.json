@@ -1,0 +1,37 @@
+{
+    "meta": {
+        "name": "JayhartSuite",
+        "author": "EmmettJayhart",
+        "description": "A suite of changes made by and for Emmett Jayhart",
+        "version": "0.1.0",
+        "source": "https://github.com/EmmettJayhart/JayhartSuite",
+        "authorId": "197698480846667777",
+        "license": "Apache-2.0 OR MIT"
+    },
+    "imports": {
+        "@std/fs": "jsr:@std/fs@^1.0.15",
+        "@std/path": "jsr:@std/path@^1.0.8",
+        "@std/semver": "jsr:@std/semver@^1.0.4",
+        "@types/react": "npm:@types/react@^19.0.12",
+        "@types/react-dom": "npm:@types/react-dom@^19.0.4",
+        "@types/react-reconciler": "npm:@types/react-reconciler@^0.31.0",
+        "betterdiscord": "https://raw.githubusercontent.com/EmmettJayhart/betterdiscord-types/main/index.d.ts",
+        "classnames": "npm:classnames@^2.5.1",
+        "esbuild": "https://deno.land/x/esbuild@v0.25.1/mod.js"
+    },
+    "tasks": {
+        "build": "deno run -A build.ts"
+    },
+    "fmt": {
+        "useTabs": false,
+        "indentWidth": 4,
+        "lineWidth": 80,
+        "semiColons": true,
+        "singleQuote": true,
+        "proseWrap": "always",
+        "include": ["./**/*.js", "./**/*.jsx", "./**/*.ts", "./**/*.tsx"]
+    },
+    "compilerOptions": {
+        "lib": ["deno.ns", "dom", "dom.iterable", "dom.asynciterable"]
+    }
+}

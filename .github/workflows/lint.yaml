@@ -1,0 +1,77 @@
+name: Lint
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: deno lint "./**/*.js"
+      - run: deno lint "./**/*.jsx"
+      - run: deno lint "./**/*.ts"
+      - run: deno lint "./**/*.tsx"
+
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: deno fmt --check "./**/*.js"
+      - run: deno fmt --check "./**/*.jsx"
+      - run: deno fmt --check "./**/*.ts"
+      - run: deno fmt --check "./**/*.jsx"
+
+  taplo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        run: |
+          rustup update stable
+          rustup default stable
+
+      - name: Install Taplo
+        run: cargo install taplo-cli
+
+      - name: Run Taplo
+        run: taplo format --check
+
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install Prettier
+        run: npm install --save-dev prettier
+
+      - name: Run Prettier
+        run: npx prettier --check "./**/*.{json,yaml}"
+
+  markdownlint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install Markdownlint
+        run: npm install --save-dev markdownlint-cli
+
+      - name: Run Markdownlint
+        run: npx markdownlint "./**/*.md"
